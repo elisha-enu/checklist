@@ -8,6 +8,13 @@
 
 import UIKit
 
+// view controller is a datasource
+// you can ask about the data anytime you feel like it
+
+// Table view contains 2 protocol method.
+// UiTableViewDataSource -> what will the table display -> where we provide data
+// UITableViewDelegate -> how will the table behave? when taps the row, show / unshow checklist -> where we interact with the table view
+
 class ChecklistViewController: UITableViewController  {
 
     override func viewDidLoad() {
