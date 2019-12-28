@@ -16,6 +16,15 @@ import UIKit
 // UITableViewDelegate -> how will the table behave? when taps the row, show / unshow checklist -> where we interact with the table view
 
 class ChecklistViewController: UITableViewController  {
+    
+    var row_0_item: ChecklistItem
+    
+    // this is called when this view controller is initialized from a story board
+    required init?(coder aDecoder: NSCoder) {
+        row_0_item = ChecklistItem()
+        row_0_item.text = "Wathing korean drama"
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +44,8 @@ class ChecklistViewController: UITableViewController  {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
         
         if let label = cell.viewWithTag(1000) as? UILabel {
-            if indexPath.row % 5 == 0 {
-                label.text = "Take a jog"
+            if indexPath.row == 0 {
+                label.text = row_0_item.text
             } else if indexPath.row % 4 == 0 {
                 label.text = "Watch a movie"
             } else if indexPath.row % 3 == 0 {
@@ -48,7 +57,35 @@ class ChecklistViewController: UITableViewController  {
             }
         }
         
+        configureCheckmark(for: cell, indexPath: indexPath)
         return cell
+    }
+    
+    // for uncheck the task
+    // because its a tableViewController, we need to override
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            configureCheckmark(for: cell, indexPath: indexPath)
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
+    func configureCheckmark(for cell: UITableViewCell, indexPath: IndexPath) {
+        if indexPath.row == 0 {
+           if(row_0_item.checked) {
+               cell.accessoryType = .checkmark
+           }
+           else {
+               cell.accessoryType = .none
+           }
+           row_0_item.checked = !row_0_item.checked
+       } else {
+           if cell.accessoryType == .none {
+               cell.accessoryType = .checkmark
+           } else {
+               cell.accessoryType = .none
+           }
+       }
     }
 
 }
