@@ -18,12 +18,28 @@ import UIKit
 class ChecklistViewController: UITableViewController  {
     
     var row_0_item: ChecklistItem
+    var row_1_item: ChecklistItem
+    var row_2_item: ChecklistItem
+    var row_3_item: ChecklistItem
+    var row_4_item: ChecklistItem
+    
     
     // this is called when this view controller is initialized from a story board
     required init?(coder aDecoder: NSCoder) {
         row_0_item = ChecklistItem()
+        row_1_item = ChecklistItem()
+        row_2_item = ChecklistItem()
+        row_3_item = ChecklistItem()
+        row_4_item = ChecklistItem()
+        
         row_0_item.text = "Wathing korean drama"
+        row_1_item.text = "Wash hair"
+        row_2_item.text = "Eat something nice"
+        row_3_item.text = "Do laundry"
+        row_4_item.text = "Go to work"
+        
         super.init(coder: aDecoder)
+         
     }
 
     override func viewDidLoad() {
@@ -33,7 +49,7 @@ class ChecklistViewController: UITableViewController  {
 
     // to decide how many cells will display
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1000
+        return 5
     }
     
     // provide the actual cell
@@ -46,14 +62,14 @@ class ChecklistViewController: UITableViewController  {
         if let label = cell.viewWithTag(1000) as? UILabel {
             if indexPath.row == 0 {
                 label.text = row_0_item.text
-            } else if indexPath.row % 4 == 0 {
-                label.text = "Watch a movie"
-            } else if indexPath.row % 3 == 0 {
-                label.text = "Code an app"
-            } else if indexPath.row % 2 == 0 {
-                label.text = "Walk the dog"
-            } else if indexPath.row % 1 == 0 {
-                label.text = "Study design patterns"
+            } else if indexPath.row == 1 {
+                label.text = row_1_item.text
+            } else if indexPath.row == 2 {
+                label.text = row_2_item.text
+            } else if indexPath.row == 3 {
+                label.text = row_3_item.text
+            } else if indexPath.row == 4 {
+                label.text = row_4_item.text
             }
         }
         
@@ -79,13 +95,39 @@ class ChecklistViewController: UITableViewController  {
                cell.accessoryType = .none
            }
            row_0_item.checked = !row_0_item.checked
-       } else {
-           if cell.accessoryType == .none {
-               cell.accessoryType = .checkmark
-           } else {
-               cell.accessoryType = .none
-           }
-       }
+        } else if indexPath.row == 1 {
+            if(row_1_item.checked) {
+                cell.accessoryType = .checkmark
+            }
+            else {
+                cell.accessoryType = .none
+            }
+            row_1_item.checked = !row_1_item.checked
+        } else if indexPath.row == 2 {
+            if(row_2_item.checked) {
+                cell.accessoryType = .checkmark
+            }
+            else {
+                cell.accessoryType = .none
+            }
+            row_2_item.checked = !row_2_item.checked
+        } else if indexPath.row == 3 {
+            if(row_3_item.checked) {
+                cell.accessoryType = .checkmark
+            }
+            else {
+                cell.accessoryType = .none
+            }
+            row_3_item.checked = !row_3_item.checked
+        } else if indexPath.row == 4 {
+            if(row_4_item.checked) {
+                cell.accessoryType = .checkmark
+            }
+            else {
+                cell.accessoryType = .none
+            }
+            row_4_item.checked = !row_4_item.checked
+        }
     }
 
 }
