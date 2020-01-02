@@ -16,30 +16,12 @@ import UIKit
 // UITableViewDelegate -> how will the table behave? when taps the row, show / unshow checklist -> where we interact with the table view
 
 class ChecklistViewController: UITableViewController  {
-    
-    var row_0_item: ChecklistItem
-    var row_1_item: ChecklistItem
-    var row_2_item: ChecklistItem
-    var row_3_item: ChecklistItem
-    var row_4_item: ChecklistItem
-    
+    var todoList: TodoList
     
     // this is called when this view controller is initialized from a story board
     required init?(coder aDecoder: NSCoder) {
-        row_0_item = ChecklistItem()
-        row_1_item = ChecklistItem()
-        row_2_item = ChecklistItem()
-        row_3_item = ChecklistItem()
-        row_4_item = ChecklistItem()
-        
-        row_0_item.text = "Wathing korean drama"
-        row_1_item.text = "Wash hair"
-        row_2_item.text = "Eat something nice"
-        row_3_item.text = "Do laundry"
-        row_4_item.text = "Go to work"
-        
+        todoList = TodoList()
         super.init(coder: aDecoder)
-         
     }
 
     override func viewDidLoad() {
