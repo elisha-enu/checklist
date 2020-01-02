@@ -19,7 +19,12 @@ class ChecklistViewController: UITableViewController  {
     var todoList: TodoList
     
     @IBAction func addItem(_ sender: Any) {
-        print("add item")
+        let newRowIndex = todoList.todos.count
+        _ = todoList.newToDo()
+        
+        let indexPath = IndexPath(row: newRowIndex, section: 0) // locate the new row at newRowIndex
+        tableView.insertRows(at: [indexPath], with: .automatic)
+        
     }
     // this is called when this view controller is initialized from a story board
     required init?(coder aDecoder: NSCoder) {
