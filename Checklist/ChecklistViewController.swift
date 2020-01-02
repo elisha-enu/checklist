@@ -18,6 +18,9 @@ import UIKit
 class ChecklistViewController: UITableViewController  {
     var todoList: TodoList
     
+    @IBAction func addItem(_ sender: Any) {
+        print("add item")
+    }
     // this is called when this view controller is initialized from a story board
     required init?(coder aDecoder: NSCoder) {
         todoList = TodoList()
@@ -26,7 +29,7 @@ class ChecklistViewController: UITableViewController  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     // to decide how many cells will display
