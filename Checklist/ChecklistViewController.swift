@@ -31,7 +31,7 @@ class ChecklistViewController: UITableViewController  {
 
     // to decide how many cells will display
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return todoList.todos.count
     }
     
     // provide the actual cell
@@ -42,17 +42,7 @@ class ChecklistViewController: UITableViewController  {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
         
         if let label = cell.viewWithTag(1000) as? UILabel {
-            if indexPath.row == 0 {
-                label.text = row_0_item.text
-            } else if indexPath.row == 1 {
-                label.text = row_1_item.text
-            } else if indexPath.row == 2 {
-                label.text = row_2_item.text
-            } else if indexPath.row == 3 {
-                label.text = row_3_item.text
-            } else if indexPath.row == 4 {
-                label.text = row_4_item.text
-            }
+            label.text = todoList.todos[indexPath.row].text
         }
         
         configureCheckmark(for: cell, indexPath: indexPath)
@@ -69,47 +59,15 @@ class ChecklistViewController: UITableViewController  {
     }
     
     func configureCheckmark(for cell: UITableViewCell, indexPath: IndexPath) {
-        if indexPath.row == 0 {
-           if(row_0_item.checked) {
-               cell.accessoryType = .checkmark
-           }
-           else {
-               cell.accessoryType = .none
-           }
-           row_0_item.checked = !row_0_item.checked
-        } else if indexPath.row == 1 {
-            if(row_1_item.checked) {
-                cell.accessoryType = .checkmark
-            }
-            else {
-                cell.accessoryType = .none
-            }
-            row_1_item.checked = !row_1_item.checked
-        } else if indexPath.row == 2 {
-            if(row_2_item.checked) {
-                cell.accessoryType = .checkmark
-            }
-            else {
-                cell.accessoryType = .none
-            }
-            row_2_item.checked = !row_2_item.checked
-        } else if indexPath.row == 3 {
-            if(row_3_item.checked) {
-                cell.accessoryType = .checkmark
-            }
-            else {
-                cell.accessoryType = .none
-            }
-            row_3_item.checked = !row_3_item.checked
-        } else if indexPath.row == 4 {
-            if(row_4_item.checked) {
-                cell.accessoryType = .checkmark
-            }
-            else {
-                cell.accessoryType = .none
-            }
-            row_4_item.checked = !row_4_item.checked
+        let isChecked = todoList.todos[indexPath.row].checked
+        if(isChecked) {
+           cell.accessoryType = .checkmark
         }
+        else {
+           cell.accessoryType = .none
+        }
+        
+        todoList.todos[indexPath.row].checked = !isChecked
     }
 
 }
