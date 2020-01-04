@@ -68,6 +68,14 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DpY-p9-7fv" id="Yzf-Xc-dAC">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DNY-Ku-5ri">
+                                                    <rect key="frame" x="7" y="4" width="394" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -79,13 +87,24 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="poh-Op-YM2">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="vUG-M1-B9D"/>
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="o6Y-Sd-uaS"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="vUG-M1-B9D">
+                            <connections>
+                                <action selector="cancel:" destination="OO9-XJ-kFV" id="nsH-0u-C6M"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="o6Y-Sd-uaS">
+                            <connections>
+                                <action selector="done:" destination="OO9-XJ-kFV" id="wZu-Ew-BhW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="textField" destination="DNY-Ku-5ri" id="S0j-21-zFC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6hD-5V-jH7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1926" y="-281"/>
+            <point key="canvasLocation" x="1924.6376811594205" y="-281.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5f2-Df-2LR">
