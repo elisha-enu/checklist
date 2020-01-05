@@ -19,10 +19,29 @@ class AddItemTableViewController: UITableViewController {
     
     @IBAction func done(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+        print("Content of the field typed is \(textField.text)")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
+//        textField.delegate = self -> comment because you can link the textField to the 'add item table view controller - outlets'
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        textField.becomeFirstResponder()
+    }
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return nil
+    }
+}
+
+
+// extensio are a great way to group all your delegate method
+extension AddItemTableViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
 }
